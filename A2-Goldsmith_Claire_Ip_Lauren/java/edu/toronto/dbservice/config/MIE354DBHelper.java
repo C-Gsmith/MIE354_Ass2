@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 
-import edu.toronto.dbservice.exceptions.SQLExceptionHandler;
+import exception_handling.SQLExceptionHandler;
 
 public class MIE354DBHelper {
 

@@ -1,5 +1,5 @@
 
-package edu.toronto.dbservice.exceptions;
+package exception_handling;
 
 import java.sql.SQLException;
 

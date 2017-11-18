@@ -1,4 +1,4 @@
-package edu.toronto.dbservice.exceptions;
+package exception_handling;
 
 public class NonexistantConnectionException extends Exception {
 
