@@ -1,0 +1,6 @@
+DROP TABLE IF EXISTS Results;
+
+CREATE TABLE IF NOT EXISTS Registered (
+id int,
+owner TEXT;
+)
