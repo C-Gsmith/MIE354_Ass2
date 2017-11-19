@@ -41,7 +41,7 @@ import org.web3j.tx.Transfer;
 import org.web3j.utils.Numeric;
 
 import edu.toronto.dbservice.config.MIE354DBHelper;
-import edu.toronto.dbservice.types.ClientRequest;
+import edu.toronto.dbservice.types.ArtRequest;
 import edu.toronto.dbservice.types.EtherAccount;
 
 import org.activiti.engine.delegate.DelegateExecution;
@@ -69,14 +69,14 @@ public class GetRequestListTask implements JavaDelegate{
 		// Selecting the registry request list from the data table
 		Statement statement;
 		ResultSet resultSet = null;
-		List<ClientRequest> clientRequestList = new ArrayList<>();
+		List<ArtRequest> clientRequestList = new ArrayList<>();
 		
 		statement = dbCon.createStatement();
 		resultSet = statement.executeQuery("SELECT * FROM Request");
 		while (resultSet.next()) {
 			Integer accountId = resultSet.getInt("account");
 			String item = resultSet.getString("item");
-			ClientRequest clientRequest = new ClientRequest(accountId, item);
+			ArtRequest clientRequest = new ArtRequest(accountId, item);
 			clientRequestList.add(clientRequest);
 		}
 		resultSet.close();

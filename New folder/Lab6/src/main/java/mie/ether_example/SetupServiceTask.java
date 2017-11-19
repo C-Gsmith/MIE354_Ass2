@@ -25,7 +25,7 @@ import java.sql.Statement;
 
 import edu.toronto.dbservice.config.MIE354DBHelper;
 import edu.toronto.dbservice.exceptions.SQLExceptionHandler;
-import edu.toronto.dbservice.types.ClientRequest;
+import edu.toronto.dbservice.types.ArtRequest;
 import edu.toronto.dbservice.types.EtherAccount;
 
 import org.web3j.abi.datatypes.DynamicArray;

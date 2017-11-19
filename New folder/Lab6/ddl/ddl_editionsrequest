@@ -1,0 +1,11 @@
+DROP TABLE IF EXISTS EditionsRequest;
+
+CREATE TABLE IF NOT EXISTS EditionsRequest (
+account INT,
+item TEXT,
+specialEdcopies INT,
+normalEdcopies INT);
+
+INSERT INTO EditionsRequest VALUES (1, 'modern madness', 0, 3);
+INSERT INTO EditionsRequest VALUES (2, 'life is a database', 2, 0);
+INSERT INTO EditionsRequest VALUES (7, 'Dreaming of the green', 1, 1);

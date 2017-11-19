@@ -1,0 +1,7 @@
+DROP TABLE IF EXISTS ArtRegistered;
+
+CREATE TABLE IF NOT EXISTS ArtRegistered (
+account INT,
+address TEXT,
+item TEXT,
+time TEXT);

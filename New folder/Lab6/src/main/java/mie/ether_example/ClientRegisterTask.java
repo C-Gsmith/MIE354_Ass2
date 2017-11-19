@@ -41,7 +41,7 @@ import org.web3j.tx.Transfer;
 import org.web3j.utils.Numeric;
 
 import edu.toronto.dbservice.config.MIE354DBHelper;
-import edu.toronto.dbservice.types.ClientRequest;
+import edu.toronto.dbservice.types.ArtRequest;
 import edu.toronto.dbservice.types.EtherAccount;
 
 import org.activiti.engine.delegate.DelegateExecution;
@@ -61,7 +61,7 @@ public class ClientRegisterTask implements JavaDelegate{
 	public void execute(DelegateExecution execution) throws Exception {
 		
 		// get current registry request
-		ClientRequest currentClientRequest = (ClientRequest) execution.getVariable("currentClientRequest");
+		ArtRequest currentClientRequest = (ArtRequest) execution.getVariable("currentClientRequest");
 		Integer clientNum = currentClientRequest.getClientNum();
 		String item = currentClientRequest.getItem();
 		

@@ -1,0 +1,9 @@
+DROP TABLE IF EXISTS EditionsRegistered;
+
+CREATE TABLE IF NOT EXISTS EditionsRegistered (
+account INT,
+address TEXT,
+item TEXT,
+specialEdcopies INT,
+normalEdcopies INT);
+

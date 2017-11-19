@@ -1,0 +1,12 @@
+DROP TABLE IF EXISTS ArtRequest;
+
+CREATE TABLE IF NOT EXISTS ArtRequest (
+account INT,
+item TEXT,
+medium TEXT);
+
+INSERT INTO ArtRequest VALUES (1, 'modern madness', 'pipe cleaners');
+INSERT INTO ArtRequest VALUES (2, 'life is a database', 'digital');
+INSERT INTO ArtRequest VALUES (3, 'java: an odyssey', 'mixed media');
+INSERT INTO ArtRequest VALUES (5, 'total Eclipse of my heart', 'tears');
+INSERT INTO ArtRequest VALUES (7, 'Dreaming of the green', 'JUnit');
