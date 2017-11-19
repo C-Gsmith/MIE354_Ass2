@@ -46,7 +46,7 @@ public class RegistryUnitTest extends LabBaseUnitTest {
 	}
 	
 	// Setup parameters to provide pairs of strings to the constructor
-	@Parameters
+	/*@Parameters
 	public static Collection<String[]> data() {
 		ArrayList<String[]> parameters = new ArrayList<>();
 		parameters.add(new String[] {"999-1234", "1"});
@@ -56,7 +56,7 @@ public class RegistryUnitTest extends LabBaseUnitTest {
 		parameters.add(new String[] {"999-3345", "7"});
 		return parameters;
 	}
-	// END OF PARAMETERIZED CODE
+	// END OF PARAMETERIZED CODE*/
 	
 	private void startProcess() {	
 		RuntimeService runtimeService = activitiContext.getRuntimeService();
