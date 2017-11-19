@@ -1,4 +1,4 @@
-
+package mie.ether_example;
 import org.junit.*;
 import org.junit.rules.TestWatcher;
 import org.junit.runner.Description;
