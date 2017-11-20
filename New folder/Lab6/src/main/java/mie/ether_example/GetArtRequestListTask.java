@@ -69,7 +69,7 @@ public class GetArtRequestListTask implements JavaDelegate{
 		// Selecting the registry request list from the data table
 		Statement statement;
 		ResultSet resultSet = null;
-		List<ArtRequest> clientRequestList = new ArrayList<>();
+		List<ArtRequest> artRequestList = new ArrayList<>();
 		
 		statement = dbCon.createStatement();
 		resultSet = statement.executeQuery("SELECT * FROM ArtRequest");
@@ -78,12 +78,12 @@ public class GetArtRequestListTask implements JavaDelegate{
 			String item = resultSet.getString("item");
 			String medium = resultSet.getString("medium");
 			ArtRequest clientRequest = new ArtRequest(accountId, item, medium);
-			clientRequestList.add(clientRequest);
+			artRequestList.add(clientRequest);
 		}
 		resultSet.close();
 		
 		// Saving the list of registry requests as a process variable
-		execution.setVariable("clientRequestList", clientRequestList);
+		execution.setVariable("artRequestList", artRequestList);
 	}
 
 }

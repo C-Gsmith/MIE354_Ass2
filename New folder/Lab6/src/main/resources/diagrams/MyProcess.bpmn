@@ -4,9 +4,9 @@
     <startEvent id="startevent1" name="Start"></startEvent>
     <serviceTask id="servicetask1" name="Setup Ethereum " activiti:class="mie.ether_example.SetupServiceTask"></serviceTask>
     <sequenceFlow id="flow1" sourceRef="startevent1" targetRef="servicetask1"></sequenceFlow>
-    <serviceTask id="servicetask2" name="Get Client Request List" activiti:async="true" activiti:class="mie.ether_example.PlaceHolderTask"></serviceTask>
+    <serviceTask id="servicetask2" name="Get Client Request List" activiti:async="true" activiti:class="mie.ether_example.GetArtRequestListTask"></serviceTask>
     <subProcess id="eventsubprocess1" name="Client Request" triggeredByEvent="true">
-      <multiInstanceLoopCharacteristics isSequential="false" activiti:collection="need to fill"></multiInstanceLoopCharacteristics>
+      <multiInstanceLoopCharacteristics isSequential="true" activiti:collection="artRequestList" activiti:elementVariable="currentArtRequest"></multiInstanceLoopCharacteristics>
       <subProcess id="eventsubprocess2" name="Create Editions" triggeredByEvent="true">
         <multiInstanceLoopCharacteristics isSequential="false" activiti:collection="need to fill"></multiInstanceLoopCharacteristics>
         <startEvent id="startevent3" name="Start"></startEvent>
@@ -25,7 +25,7 @@
         <sequenceFlow id="flow90" sourceRef="servicetask6" targetRef="inclusivegateway1"></sequenceFlow>
       </subProcess>
       <startEvent id="startevent2" name="Start"></startEvent>
-      <serviceTask id="servicetask4" name="Get Artwork Info" activiti:class="mie.ether_example.PlaceHolderTask"></serviceTask>
+      <serviceTask id="servicetask4" name="Get Artwork Info" activiti:class="mie.ether_example.ArtRegisterTask"></serviceTask>
       <serviceTask id="servicetask5" name="Get Edition Request List" activiti:class="mie.ether_example.PlaceHolderTask"></serviceTask>
       <sequenceFlow id="flow5" sourceRef="startevent2" targetRef="servicetask4"></sequenceFlow>
       <sequenceFlow id="flow6" sourceRef="servicetask4" targetRef="servicetask5"></sequenceFlow>

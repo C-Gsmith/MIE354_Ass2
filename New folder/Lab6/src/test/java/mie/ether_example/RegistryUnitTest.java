@@ -32,38 +32,40 @@ public class RegistryUnitTest extends LabBaseUnitTest {
 	
 	@BeforeClass
 	public static void setupFile() {
-		filename = "src/main/resources/diagrams/RegistryDiagram.bpmn";
+		filename = "src/main/resources/diagrams/MyProcess.bpmn";
 	}
 	
 	// START OF PARAMETERIZED CODE
 	private String aItemParameter;
+	private String aMediumParameter;
 	private String aOwnerParameter;
 	
 	// Constructor has two string parameters
-	public RegistryUnitTest(String itemParam, String ownerParam) {
+	public RegistryUnitTest(String itemParam, String mediumParam, String ownerParam) {
 		this.aItemParameter = itemParam;
+		this.aMediumParameter=mediumParam;
 		this.aOwnerParameter = ownerParam;
 	}
 	
 	// Setup parameters to provide pairs of strings to the constructor
-	/*@Parameters
+	@Parameters
 	public static Collection<String[]> data() {
 		ArrayList<String[]> parameters = new ArrayList<>();
-		parameters.add(new String[] {"999-1234", "1"});
-		parameters.add(new String[] {"999-2345", "2"});
-		parameters.add(new String[] {"999-3456", "3"});
-		parameters.add(new String[] {"999-1434", "5"});
-		parameters.add(new String[] {"999-3345", "7"});
+		parameters.add(new String[] {"modern madness", "pipe cleaners","1"});
+		parameters.add(new String[] {"life is a database", "digital", "2"});
+		parameters.add(new String[] {"java: an odyssey","mixed media", "3"});
+		parameters.add(new String[] {"total Eclipse of my heart","tears", "5"});
+		parameters.add(new String[] {"Dreaming of the green","JUnit" ,"7"});
 		return parameters;
 	}
-	// END OF PARAMETERIZED CODE*/
+	// END OF PARAMETERIZED CODE
 	
 	private void startProcess() {	
 		RuntimeService runtimeService = activitiContext.getRuntimeService();
 		processInstance = runtimeService.startProcessInstanceByKey("process_pool1");
 	}
 	
-	private void fillAuditForm(String auditedItem) {
+	/*private void fillAuditForm(String auditedItem) {
 		// form fields are filled using a map from field ids to values
 		HashMap<String, String> formEntries = new HashMap<>();
 		formEntries.put("aAuditedItem", auditedItem);
@@ -96,9 +98,9 @@ public class RegistryUnitTest extends LabBaseUnitTest {
 		
 		// submit the form (will lead to completing the use task)
 		activitiContext.getFormService().submitTaskFormData(proposalsTask.getId(), formEntries);
-	}
+	}*/
 	
-	private void auditItem(Integer expectedClientId) {
+	/*private void auditItem(Integer expectedClientId) {
 		// get audited item owner
 		String auditedItemOwner = (String) activitiContext.getRuntimeService().getVariableLocal(processInstance.getId(), "auditedItemOwner");
 		
@@ -106,8 +108,15 @@ public class RegistryUnitTest extends LabBaseUnitTest {
 		HashMap<Integer, EtherAccount> accounts = (HashMap<Integer, EtherAccount>) activitiContext.getRuntimeService().getVariableLocal(processInstance.getId(), "accounts");
 		String expectedOwner = accounts.get(expectedClientId).getCredentials().getAddress();
 		assertTrue(auditedItemOwner.equals(expectedOwner));
+	}*/
+	@Test
+	public void checkRunProcess() {
+		// Check process is paused at usertask1
+		startProcess();
+		assertNotNull(processInstance);
 	}
 	
+		
 	@Test
 	public void checkRegisterAndPaused() {
 		// Check process is paused at usertask1
@@ -125,7 +134,7 @@ public class RegistryUnitTest extends LabBaseUnitTest {
 		assertTrue(list.get(0).getTaskDefinitionKey().equals("usertask1"));
 	}
 	
-	@Test
+	/*@Test
 	public void checkRegisterAndAudit() {
 		startProcess();
 		fillAuditForm(aItemParameter);
@@ -140,10 +149,10 @@ public class RegistryUnitTest extends LabBaseUnitTest {
 
 		System.out.println("Process instance end time: "
 				+ historicProcessInstance.getEndTime());
-	}
+	}*/
 	
 	@Test
-	public void checkRegisterRecordedInDB() throws SQLException {
+	public void checkArtRegisterRecordedInDB() throws SQLException {
 		// Start process. will pause at usertask1
 		startProcess();
 		
@@ -155,7 +164,7 @@ public class RegistryUnitTest extends LabBaseUnitTest {
 		// First, we load all requested items into a list
 		ArrayList<String> requestedItems = new ArrayList<>();
 		statement = dbCon.createStatement();
-		resultSet = statement.executeQuery("SELECT * FROM Request");
+		resultSet = statement.executeQuery("SELECT * FROM ArtRequest");
 		while (resultSet.next()) {
 			String item = resultSet.getString("item");
 			requestedItems.add(item);
@@ -164,7 +173,7 @@ public class RegistryUnitTest extends LabBaseUnitTest {
 		// Then, we load all registered items into a list
 		ArrayList<String> registeredItems = new ArrayList<>();
 		statement = dbCon.createStatement();
-		resultSet = statement.executeQuery("SELECT * FROM Registered");
+		resultSet = statement.executeQuery("SELECT * FROM ArtRegistered");
 		while (resultSet.next()) {
 			String item = resultSet.getString("item");
 			registeredItems.add(item);
