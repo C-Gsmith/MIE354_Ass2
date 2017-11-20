@@ -133,23 +133,7 @@ public class RegistryUnitTest extends LabBaseUnitTest {
 		// assert pending task id
 		assertTrue(list.get(0).getTaskDefinitionKey().equals("usertask1"));
 	}
-	
-	/*@Test
-	public void checkRegisterAndAudit() {
-		startProcess();
-		fillAuditForm(aItemParameter);
-		auditItem(Integer.valueOf(aOwnerParameter));
-		
-		// assert process ended
-		HistoryService historyService = activitiContext.getHistoryService();
-		HistoricProcessInstance historicProcessInstance = historyService
-				.createHistoricProcessInstanceQuery()
-				.processInstanceId(processInstance.getId()).singleResult();
-		assertNotNull(historicProcessInstance);
 
-		System.out.println("Process instance end time: "
-				+ historicProcessInstance.getEndTime());
-	}*/
 	
 	@Test
 	public void checkArtRegisterRecordedInDB() throws SQLException {
