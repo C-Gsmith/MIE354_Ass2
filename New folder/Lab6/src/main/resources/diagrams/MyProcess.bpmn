@@ -7,7 +7,13 @@
     <startEvent id="startevent1" name="Start"></startEvent>
     <serviceTask id="servicetask1" name="Setup Ethereum " activiti:class="mie.ether_example.SetupServiceTask"></serviceTask>
     <sequenceFlow id="flow1" sourceRef="startevent1" targetRef="servicetask1"></sequenceFlow>
+<<<<<<< HEAD
+    <serviceTask id="servicetask2" name="Get Client Request List" activiti:async="true" activiti:class="mie.ether_example.GetArtRequestListTask"></serviceTask>
+    <subProcess id="eventsubprocess1" name="Client Request" triggeredByEvent="true">
+      <multiInstanceLoopCharacteristics isSequential="true" activiti:collection="artRequestList" activiti:elementVariable="currentArtRequest"></multiInstanceLoopCharacteristics>
+=======
     <serviceTask id="servicetask2" name="Get Client Request List" activiti:async="true" activiti:class="mie.ether_example.PlaceHolderTask"></serviceTask>
+<<<<<<< HEAD
     <userTask id="usertask1" name="Choose Privacy Settings"></userTask>
     <exclusiveGateway id="exclusivegateway8" name="Exclusive Gateway"></exclusiveGateway>
     <serviceTask id="servicetask32" name="Make Public" activiti:class="mie.ether_example.PlaceHolderTask"></serviceTask>
@@ -112,6 +118,13 @@
       <sequenceFlow id="flow105" sourceRef="servicetask5" targetRef="subprocess3"></sequenceFlow>
       <subProcess id="subprocess3" name="Create Editions">
         <multiInstanceLoopCharacteristics isSequential="false" activiti:collection="y"></multiInstanceLoopCharacteristics>
+=======
+    <subProcess id="subprocess1" name="Client Request" triggeredByEvent="true">
+      <multiInstanceLoopCharacteristics isSequential="false" activiti:collection="need to fill"></multiInstanceLoopCharacteristics>
+>>>>>>> aeb3830a7cf132a715d0ea4bf8fb823eba14b40f
+      <subProcess id="eventsubprocess2" name="Create Editions" triggeredByEvent="true">
+        <multiInstanceLoopCharacteristics isSequential="false" activiti:collection="need to fill"></multiInstanceLoopCharacteristics>
+>>>>>>> 60667ef54c5645af8481821c91c6aa0035593f5b
         <startEvent id="startevent3" name="Start"></startEvent>
         <sequenceFlow id="flow8" sourceRef="startevent3" targetRef="servicetask6"></sequenceFlow>
         <serviceTask id="servicetask6" name="Get Edition Details" activiti:class="mie.ether_example.PlaceHolderTask"></serviceTask>
@@ -127,7 +140,16 @@
         <sequenceFlow id="flow15" sourceRef="inclusivegateway2" targetRef="endevent1"></sequenceFlow>
         <endEvent id="endevent1" name="End"></endEvent>
       </subProcess>
+<<<<<<< HEAD
       <sequenceFlow id="flow106" sourceRef="subprocess3" targetRef="parallelgateway1"></sequenceFlow>
+=======
+      <startEvent id="startevent2" name="Start"></startEvent>
+      <serviceTask id="servicetask4" name="Get Artwork Info" activiti:class="mie.ether_example.ArtRegisterTask"></serviceTask>
+      <serviceTask id="servicetask5" name="Get Edition Request List" activiti:class="mie.ether_example.PlaceHolderTask"></serviceTask>
+      <sequenceFlow id="flow5" sourceRef="startevent2" targetRef="servicetask4"></sequenceFlow>
+      <sequenceFlow id="flow6" sourceRef="servicetask4" targetRef="servicetask5"></sequenceFlow>
+      <sequenceFlow id="flow7" sourceRef="servicetask5" targetRef="eventsubprocess2"></sequenceFlow>
+>>>>>>> 60667ef54c5645af8481821c91c6aa0035593f5b
       <parallelGateway id="parallelgateway1" name="Parallel Gateway"></parallelGateway>
       <sequenceFlow id="flow107" sourceRef="parallelgateway1" targetRef="subprocess2"></sequenceFlow>
       <sequenceFlow id="flow111" sourceRef="parallelgateway1" targetRef="subprocess4"></sequenceFlow>
